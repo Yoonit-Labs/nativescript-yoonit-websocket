@@ -1,0 +1,6 @@
+demo/
+.idea/
+support/
+*.tar
+*.tgz
+.npmignore

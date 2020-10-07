@@ -1,0 +1,38 @@
+{
+  "name": "demo-vue",
+  "version": "0.1.0",
+  "description": "A native application built with NativeScript-Vue",
+  "license": "MIT",
+  "nativescript": {
+    "id": "ai.cyberlabs.yoonit.vuedemo",
+    "templateVersion": "v2",
+    "tns-ios": {
+      "version": "6.3.0"
+    },
+    "tns-android": {
+      "version": "6.5.3"
+    }
+  },
+  "dependencies": {
+    "nativescript-yoonit-websocket": "file:../src",
+    "nativescript-vue": "2.7.1",
+    "tns-core-modules": "~6.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-standard": "^6.1.0",
+    "eslint-friendly-formatter": "^2.0.5",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "nativescript-dev-webpack": "^1.0.0",
+    "nativescript-vue-template-compiler": "2.8.1",
+    "nativescript-worker-loader": "^0.9.5",
+    "node-sass": "^4.9.2",
+    "typescript": "~3.5.3",
+    "vue-loader": "^15.4.0"
+  }
+}
