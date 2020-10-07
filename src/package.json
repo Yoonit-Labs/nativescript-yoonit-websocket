@@ -1,5 +1,5 @@
 {
-  "name": "nativescript-yoonit-websocket",
+  "name": "@yoonit/nativescript-yoonit-websocket",
   "version": "1.0.0",
   "description": "Yoonit WebSocket plugin for Android and iOS to build modern apps with NativeScript",
   "main": "websocket",
