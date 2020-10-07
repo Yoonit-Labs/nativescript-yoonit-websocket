@@ -45,7 +45,7 @@ export default class WebSocketBase {
     this._queue = []
     this._queueRunner = null
     this._sslSocketFactory = null
-    this.socket = {}
+    this.socket = null
 
     /**
     * This is a list standardized Close Codes
@@ -187,17 +187,23 @@ export default class WebSocketBase {
         this.socket.delegate = null
       }
 
-      this.socket.wrapper = null
-      this.socket = null
+      if (this.socket ||
+          this.socket.wrapper) {
+        this.socket.wrapper = null
+        this.socket = null
+      }
+
       this.create()
     }
 
     this.opened = true
 
-    if (this.socket.connect &&
+    if (this.socket &&
+        this.socket.connect &&
         typeof this.socket.connect === 'function') {
       this.socket.connect()
-    } else if (this.socket.open &&
+    } else if (this.socket &&
+              this.socket.open &&
               typeof this.socket.open === 'function') {
       this.socket.open()
     }
@@ -211,7 +217,8 @@ export default class WebSocketBase {
   close (code, message) {
     if (code &&
         message) {
-      if (this.socket.closeWithCodeReason &&
+      if (this.socket &&
+          this.socket.closeWithCodeReason &&
           typeof this.socket.closeWithCodeReason === 'function') {
         return this.socket.closeWithCodeReason(code, message || '')
       }

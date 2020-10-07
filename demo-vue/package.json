@@ -14,7 +14,7 @@
     }
   },
   "dependencies": {
-    "nativescript-yoonit-websocket": "file:../src",
+    "@yoonit/nativescript-websocket": "file:../src",
     "nativescript-vue": "2.7.1",
     "tns-core-modules": "~6.3.0"
   },

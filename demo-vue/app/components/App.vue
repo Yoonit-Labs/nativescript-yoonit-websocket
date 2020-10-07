@@ -1,17 +1,19 @@
 <template>
   <Page @loaded="doLoaded">
-    <ActionBar title="Welcome to NativeScript-Vue!"/>
-    <GridLayout
-      height="100%"
-      width="100%"
-    >
-    </GridLayout>
+    <ActionBar title="Yoonit WebSocket"/>
+
+    <ScrollView orientation="vertical">
+      <Label class="console" :text="consoleContent" textWrap="true"></Label>
+    </ScrollView>
   </Page>
 </template>
 
 <script>
 export default {
-  data: () => ({}),
+  data: () => ({
+    consoleContent: '',
+    interval: null
+  }),
   methods: {
     doLoaded () {
       this.$yoo.socket.destroy()
@@ -25,57 +27,76 @@ export default {
         error: this.doSocketError
       })
 
-      this.doPing()
+      const consoleLabel = "[YooSocket] Connecting..."
+
+      this.doWriteInConsole(consoleLabel)
+    },
+    doWriteInConsole (text) {
+      let newLine = '\n'
+
+      if (!this.consoleContent) {
+        newLine = ''
+      }
+
+      this.consoleContent = `${this.consoleContent}${newLine}${text}`
     },
     doPing () {
-      return setInterval(() => {
+      this.interval = setInterval(() => {
         console.log('\n')
 
         if (!this.$yoo.socket.getStatus()) {
-          return console.log(
-            '[YooSocket]',
-            'Socket closed'
-          )
+          const consoleLabel = '\n[YooSocket] Socket closed'
+
+          this.doWriteInConsole(consoleLabel)
+
+          return console.log(consoleLabel)
         }
 
-        console.log(
-          '[YooSocket]',
-          "Sending 'echo' message!"
-        )
+        const consoleLabel = "\n[YooSocket] Sending 'echo' message!"
+
+        this.doWriteInConsole(consoleLabel)
+        console.log(consoleLabel)
+
         return this.$yoo.socket.push('echo')
       }, 2000)
     },
     doSocketOpen ($socket) {
-      console.log(
-        '[YooSocket]',
-        "Hey! I'm connected!"
-      )
+      const consoleLabel = "[YooSocket] Hey! I'm connected!"
+
+      this.doWriteInConsole(consoleLabel)
+      console.log(consoleLabel)
+
+      clearInterval(this.interval)
+      return this.doPing()
     },
     doSocketClose () {
-      console.log(
-        '[YooSocket]',
-        'Socket was closed'
-      )
+      const consoleLabel = '[YooSocket] Socket was closed'
+
+      this.doWriteInConsole(consoleLabel)
+
+      return console.log(consoleLabel)
     },
     doSocketError () {
-      console.log(
-        '[YooSocket]',
-        'Socket had an error'
-      )
+      const consoleLabel = '[YooSocket] Socket had an error'
+
+      this.doWriteInConsole(consoleLabel)
+
+      return console.log(consoleLabel)
     },
     doReceivedMessage ($socket, message) {
       if (!message) {
-        return console.log(
-          '[YooSocket]',
-          'Message is empty'
-        )
+        const consoleLabel = '[YooSocket] Message is empty'
+
+        this.doWriteInConsole(consoleLabel)
+
+        return console.log(consoleLabel)
       }
 
-      return console.log(
-        '[YooSocket]',
-        'Received Message:',
-        `'${message}'!`
-      )
+      const consoleLabel = `[YooSocket] Received Message: '${message}'!`
+
+      this.doWriteInConsole(consoleLabel)
+
+      return console.log(consoleLabel)
     },
   }
 }
@@ -83,22 +104,11 @@ export default {
 
 <style scoped>
   ActionBar {
-    background-color: #53ba82;
+    background-color: #000000;
     color: #ffffff;
   }
 
-  Button {
-    padding: 8 12;
-    color: #333333;
-    background-color: lightgray;
-    border-radius: 8;
-    margin: 8 0 8 12;
-  }
-
-  .message {
-    vertical-align: center;
-    text-align: center;
+  .console {
     font-size: 20;
-    color: #333333;
   }
 </style>

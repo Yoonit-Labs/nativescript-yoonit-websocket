@@ -65,10 +65,8 @@ export default class YoonitWebSocket extends WebSocketBase {
     }
 
     // Clear old memory if used...
-    if (this.socket ||
-        this.socket.wrapper) {
-      this.socket.wrapper = {}
-      this.socket = {}
+    if (this.socket) {
+      this.socket = null
     }
 
     this.socket = new WebSocket(
@@ -80,6 +78,10 @@ export default class YoonitWebSocket extends WebSocketBase {
       ToHashMap(this.headers),
       this.timeout
     )
+
+    if (!this.socket) {
+      return
+    }
 
     // Create linking and values for the socket controller.
     this.socket.wrapper = this
@@ -154,8 +156,16 @@ export default class YoonitWebSocket extends WebSocketBase {
             )
         }
 
+        if (!this.socket) {
+          return
+        }
+
         this.socket.send(buffer)
       } else {
+        if (!this.socket) {
+          return
+        }
+
         this.socket.send(message)
       }
     } catch (err) {
@@ -176,7 +186,8 @@ export default class YoonitWebSocket extends WebSocketBase {
   *                     .CLOSING or .CLOSED
   */
   state () {
-    if (!this.socket.getReadyState) {
+    if (!this.socket ||
+        !this.socket.getReadyState) {
       return
     }
 
@@ -206,6 +217,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if the connection is open
   */
   isOpen () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.isOpen()
   }
 
@@ -214,6 +229,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if the connection is closed
   */
   isClosed () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.isClosed()
   }
 
@@ -222,6 +241,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if closing
   */
   isClosing () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.isClosing()
   }
 
@@ -230,6 +253,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if connecting
   */
   isConnecting () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.isConnecting()
   }
 }

@@ -55,18 +55,14 @@ export default class YoonitWebSocket extends WebSocketBase {
     }
 
     // Clear old memory if used...
-    if (this.socket ||
-        this.socket.native ||
-        this.socket.wrapper) {
-      this.socket.native = {}
-      this.socket.wrapper = {}
-      this.socket = {}
+    if (this.socket) {
+      this.socket = null
     }
 
+    this.socket = PSWebSocket.clientSocketWithRequest(urlRequest)
     this.socket.native = WebSocket.alloc().init()
     this.socket.native.wrapper = this
 
-    this.socket = PSWebSocket.clientSocketWithRequest(urlRequest)
     if (this.protocol) {
       this.socket.protocol = this.protocol
     }
@@ -80,6 +76,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @private
   */
   _send (message) {
+    if (!this.socket) {
+      return
+    }
+
     this.socket.send(message)
   }
 
@@ -99,6 +99,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if the connection is open
   */
   isOpen () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.readyState === this.OPEN
   }
 
@@ -107,6 +111,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if the connection is closed
   */
   isClosed () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.readyState === this.CLOSED
   }
 
@@ -115,6 +123,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if closing
   */
   isClosing () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.readyState === this.CLOSING
   }
 
@@ -123,6 +135,10 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @returns {boolean} - true if connecting
   */
   isConnecting () {
+    if (!this.socket) {
+      return
+    }
+
     return this.socket.readyState === this.CONNECTING
   }
 }
