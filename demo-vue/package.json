@@ -4,7 +4,7 @@
   "description": "A native application built with NativeScript-Vue",
   "license": "MIT",
   "nativescript": {
-    "id": "ai.cyberlabs.yoonit.vuedemo",
+    "id": "ai.cyberlabs.yoonit.websocket",
     "templateVersion": "v2",
     "tns-ios": {
       "version": "6.3.0"
