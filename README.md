@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/feature/docs/logo_cyberlabs.png" width="300">
+
 # NativeScript Yoonit WebSocket
 
 ![Generic badge](https://img.shields.io/badge/version-v1.0.0-<COLOR>.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
