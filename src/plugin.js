@@ -34,6 +34,7 @@ export default {
     let headers
     let reconnect
     let debug
+    let proxy
 
     if (opts) {
       protocol = opts.protocol || ''
@@ -41,6 +42,7 @@ export default {
       headers = opts.headers || []
       reconnect = opts.reconnect || true
       debug = opts.debug
+      proxy = opts.proxy || null
     }
 
     const socket = new YoonitWebSocket(
@@ -49,7 +51,8 @@ export default {
         protocol,
         timeout,
         headers,
-        debug
+        debug,
+        proxy
       }
     )
 
@@ -100,7 +103,7 @@ export default {
     }
 
     socket['events'] = events
-    socket['openAsync'] = () => setTimeout(() => socket.open(), 1000)
+    socket['openAsync'] = (timeout = 1000) => setTimeout(() => socket.open(), timeout)
     socket['getStatus'] = () => socket.opened
     socket['push'] = push
     socket['destroy'] = destroy

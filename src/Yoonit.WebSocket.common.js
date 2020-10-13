@@ -117,7 +117,7 @@ export default class WebSocketBase {
   * @param thisArg {Object} - the "this" to use for calling your function,
   *                           defaults to this current webSocket "this"
   */
-  on (event, callback, thisArg) {
+  on (event, callback, thisArg = this) {
     this.addEventListener(event, callback, thisArg)
   }
 
@@ -138,7 +138,7 @@ export default class WebSocketBase {
   * @param thisArg {Object} - the "this" to use for calling your function,
   *                           defaults to this current webSocket "this"
   */
-  addEventListener (event, callback, thisArg) {
+  addEventListener (event, callback, thisArg = this) {
     if (!Array.isArray(this.callbacks[event])) {
       throw new Error('addEventListener passed an invalid event type ' + event)
     }
@@ -146,7 +146,7 @@ export default class WebSocketBase {
     this.callbacks[event]
       .push({
         c: callback,
-        t: thisArg
+        t: thisArg || this
       })
   }
 
