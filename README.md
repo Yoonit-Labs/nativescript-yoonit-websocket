@@ -14,7 +14,7 @@ A NativeScript plugin to provide:
 ## Installation
 
 ```bash
-npm i -s nativescript-yoonit-websocket
+npm i -s @yoonit/nativescript-websocket
 ```
 
 ## Usage
