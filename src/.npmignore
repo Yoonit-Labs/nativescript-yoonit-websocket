@@ -4,3 +4,11 @@ support/
 *.tar
 *.tgz
 .npmignore
+*.map
+*.ts
+!*.d.ts
+tsconfig.json
+scripts
+.DS_Store
+*.aar
+node_modules
