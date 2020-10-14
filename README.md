@@ -151,7 +151,8 @@ export default {
 
 ## To contribute and make it better
 
-Clone the repo, change what you want and send PR
+Clone the repo, change what you want and send PR.
+
 Contributions are always welcome!
 
 ---
