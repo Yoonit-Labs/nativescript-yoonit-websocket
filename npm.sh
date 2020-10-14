@@ -22,17 +22,14 @@
 
 git checkout development
 GITURL=`git config remote.origin.url`
-PACKAGE_VERSION=$(sed -n '/\"version\"/s/[^0-9.]//gp' src/package.json | tr -d '\n')
-git tag v$PACKAGE_VERSION
-git push --tags
+# PACKAGE_VERSION=$(sed -n '/\"version\"/s/[^0-9.]//gp' src/package.json | tr -d '\n')
+# git tag v$PACKAGE_VERSION
+# git push --tags
 rm -rf src/node_modules
 rm -rf npm
-
 mkdir npm
-
 cp src/* npm/*
 cp README.md npm/README.md
-
 cd npm
 git init
 git remote add origin $GITURL
