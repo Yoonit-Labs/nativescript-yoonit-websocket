@@ -14,12 +14,12 @@ A NativeScript plugin to provide:
 ## Installation
 
 ```bash
-tns plugin add nativescript-yoonit-websocket
+npm i -s nativescript-yoonit-websocket
 ```
 
 ## Usage
 
-All the functionalities that the `nativescript-yoonit-websocket` provides is accessed through the `YoonitWebSocket` object. Below we have the basic usage code, for more details, your can see the [**Methods**](#methods), [**Events**](#events) or the [**Demo Vue**](https://github.com/Yoonit-Labs/nativescript-yoonit-websocket/tree/development/demo-vue).
+All the functionalities that the `nativescript-yoonit-websocket` provides is accessed through the `YoonitWebSocket` object. Below we have the basic usage code, for more details, your can see the [**Methods**](#methods) or the [**Demo Vue**](https://github.com/Yoonit-Labs/nativescript-yoonit-websocket/tree/development/demo-vue).
 
 
 #### VueJS Plugin
