@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/feature/docs/logo_cyberlabs.png" width="300">
+<img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/development/logo_cyberlabs.png" width="300">
 
 # NativeScript Yoonit WebSocket
 
