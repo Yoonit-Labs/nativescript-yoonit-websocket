@@ -27,7 +27,7 @@ GITURL=`git config remote.origin.url`
 # git push --tags
 rm -rf ./src/node_modules
 rm -rf ./npm
-mkdir npm
+mkdir 'npm'
 cp src/* npm/*
 cp README.md npm/README.md
 cd npm
