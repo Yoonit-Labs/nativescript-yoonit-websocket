@@ -20,15 +20,17 @@
 # THE SOFTWARE.
 ###############################################################################
 
-git checkout development
+function pause(){
+ read -s -n 1 -p "Press any key to continue . . ."
+ echo ""
+}
+
 GITURL=`git config remote.origin.url`
-# PACKAGE_VERSION=$(sed -n '/\"version\"/s/[^0-9.]//gp' src/package.json | tr -d '\n')
-# git tag v$PACKAGE_VERSION
-# git push --tags
-rm -rf ./src/node_modules
-rm -rf ./npm
-mkdir 'npm'
-cp src/* npm/*
+git checkout development
+rm -rf src/node_modules
+rm -rf npm
+mkdir npm
+cp -fR src/* npm
 cp README.md npm/README.md
 cd npm
 git init
@@ -36,4 +38,9 @@ git remote add origin $GITURL
 git add .
 git commit -am "npm publish"
 git push origin master:npm --force
-npm publish
+npm publish --access public
+PACKAGE_VERSION=$(sed -n '/\"version\"/s/[^0-9.]//gp' package.json | tr -d '\n')
+git tag v$PACKAGE_VERSION
+git push --tags
+rm -rf npm
+pause
