@@ -1,0 +1,11 @@
+/* Include.gradle configuration: http://docs.nativescript.org/plugins/plugins#includegradle-specification */
+
+android {}
+
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation 'com.github.TooTallNate:Java-WebSocket:v1.3.9'
+}
