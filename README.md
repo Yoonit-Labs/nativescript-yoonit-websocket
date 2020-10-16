@@ -26,7 +26,7 @@ All the functionalities that the `@yoonit/nativescript-websocket` provides is ac
 `main.js`
 ```javascript
 import Vue from 'nativescript-vue'
-import YoonitWebSocket from '@yoonit/nativescript-websocket/plugin'
+import YoonitWebSocket from '@yoonit/nativescript-websocket/vue'
 
 Vue.use(
   YoonitWebSocket,
