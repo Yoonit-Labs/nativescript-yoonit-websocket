@@ -16,9 +16,11 @@ export default {
   }),
   methods: {
     doLoaded () {
-      this.$yoo.socket.destroy()
+      const consoleLabel = "[YooSocket] Connecting..."
 
-      this.$yoo.socket.openAsync()
+      this.doWriteInConsole(consoleLabel)
+
+      this.$yoo.socket.open()
 
       this.$yoo.socket.events({
         open: this.doSocketOpen,
@@ -26,10 +28,6 @@ export default {
         close: this.doSocketClose,
         error: this.doSocketError
       })
-
-      const consoleLabel = "[YooSocket] Connecting..."
-
-      this.doWriteInConsole(consoleLabel)
     },
     doWriteInConsole (text) {
       let newLine = '\n'
@@ -39,6 +37,8 @@ export default {
       }
 
       this.consoleContent = `${this.consoleContent}${newLine}${text}`
+
+      console.log(text)
     },
     doPing () {
       this.interval = setInterval(() => {
@@ -48,14 +48,11 @@ export default {
           const consoleLabel = '\n[YooSocket] Socket closed'
 
           this.doWriteInConsole(consoleLabel)
-
-          return console.log(consoleLabel)
         }
 
         const consoleLabel = "\n[YooSocket] Sending 'echo' message!"
 
         this.doWriteInConsole(consoleLabel)
-        console.log(consoleLabel)
 
         return this.$yoo.socket.push('echo')
       }, 2000)
@@ -64,7 +61,6 @@ export default {
       const consoleLabel = "[YooSocket] Hey! I'm connected!"
 
       this.doWriteInConsole(consoleLabel)
-      console.log(consoleLabel)
 
       clearInterval(this.interval)
       return this.doPing()
@@ -73,30 +69,22 @@ export default {
       const consoleLabel = '[YooSocket] Socket was closed'
 
       this.doWriteInConsole(consoleLabel)
-
-      return console.log(consoleLabel)
     },
     doSocketError () {
       const consoleLabel = '[YooSocket] Socket had an error'
 
       this.doWriteInConsole(consoleLabel)
-
-      return console.log(consoleLabel)
     },
     doReceivedMessage ($socket, message) {
       if (!message) {
         const consoleLabel = '[YooSocket] Message is empty'
 
         this.doWriteInConsole(consoleLabel)
-
-        return console.log(consoleLabel)
       }
 
       const consoleLabel = `[YooSocket] Received Message: '${message}'!`
 
       this.doWriteInConsole(consoleLabel)
-
-      return console.log(consoleLabel)
     },
   }
 }
