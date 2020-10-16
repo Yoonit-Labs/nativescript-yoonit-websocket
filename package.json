@@ -1,0 +1,37 @@
+{
+  "name": "@yoonit/nativescript-websocket",
+  "version": "1.0.1",
+  "description": "Yoonit WebSocket plugin for Android and iOS to build modern apps with NativeScript",
+  "main": "Yoonit.WebSocket",
+  "nativescript": {
+    "platforms": {
+      "android": "1.5.0",
+      "ios": "1.5.0"
+    }
+  },
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/Yoonit-Labs/nativescript-yoonit-websocket"
+	},
+  "scripts": {},
+  "keywords": [
+    "JavaScript",
+    "NativeScript",
+    "WebSockets",
+    "Android",
+    "iOS"
+  ],
+  "author": {
+    "name": "Luigui Delyer @ Cyberlabs AI - 2020",
+    "email": "luigui@cyberlabs.ai"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-standard": "^6.1.0",
+    "eslint-friendly-formatter": "^2.0.5",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
