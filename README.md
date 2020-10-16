@@ -62,7 +62,7 @@ export default {
   methods: {
     doLoaded () {
       // start the connection
-      this.$yoo.socket.openAsync()
+      this.$yoo.socket.open()
 
       // declare all callback events
       this.$yoo.socket.events({
