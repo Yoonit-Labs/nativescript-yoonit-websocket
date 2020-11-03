@@ -1,8 +1,10 @@
-<img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/development/logo_cyberlabs.png" width="300">
+[<img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/development/logo_cyberlabs.png" width="300">](https://cyberlabs.ai/)
 
 # NativeScript Yoonit WebSocket
 
-![Generic badge](https://img.shields.io/badge/version-v1.0.0-<COLOR>.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
+![NativeScript](https://img.shields.io/badge/NativeScript-7-lightgrey.svg?style=for-the-badge&logo=nativescript) ![Version](https://img.shields.io/npm/v/@yoonit/nativescript-websocket?color=lightgrey&style=for-the-badge&logo=npm) ![Downloads](https://img.shields.io/npm/dm/@yoonit/nativescript-websocket?color=lightgrey&logo=npm&style=for-the-badge)
+
+![Android](https://img.shields.io/badge/Android-YES-lightgrey.svg?style=for-the-badge&logo=android) ![iOS](https://img.shields.io/badge/iOS-YES-lightgrey.svg?style=for-the-badge&logo=apple) ![MIT license](https://img.shields.io/npm/l/@yoonit/nativescript-websocket?color=lightgrey&style=for-the-badge)
 
 Build modern apps using NativeScript and WebSocket in Android and iOS
 
