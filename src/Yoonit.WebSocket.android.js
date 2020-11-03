@@ -83,6 +83,10 @@ export default class YoonitWebSocket extends WebSocketBase {
       return
     }
 
+    if (this.debug) {
+      org.java_websocket.WebSocketImpl.DEBUG = true
+    }
+
     // Create linking and values for the socket controller.
     this.socket.wrapper = this
     this.socket.debug = this.debug

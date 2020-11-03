@@ -79,7 +79,6 @@ export default class WebSocketBase {
 
     if (this.debug) {
       console.log(`${this.debugLabel} Start!`)
-      org.java_websocket.WebSocketImpl.DEBUG = true
     }
   }
 
