@@ -14,6 +14,40 @@ export default {
     consoleContent: '',
     interval: null
   }),
+  yoo: {
+    socket: {
+      events: {
+        open ($socket) {
+          const consoleLabel = "[YooSocket] Hey! I'm connected!"
+          this.doWriteInConsole(consoleLabel)
+
+          clearInterval(this.interval)
+          return this.doPing()
+        },
+        message ($socket, message) {
+          if (!message) {
+            const consoleLabel = '[YooSocket] Message is empty'
+
+            this.doWriteInConsole(consoleLabel)
+          }
+
+          const consoleLabel = `[YooSocket] Received Message: '${message}'!`
+
+          this.doWriteInConsole(consoleLabel)
+        },
+        close () {
+          const consoleLabel = '[YooSocket] Socket was closed'
+
+          this.doWriteInConsole(consoleLabel)
+        },
+        error () {
+          const consoleLabel = '[YooSocket] Socket had an error'
+
+          this.doWriteInConsole(consoleLabel)
+        }
+      }
+    }
+  },
   methods: {
     doLoaded () {
       const consoleLabel = "[YooSocket] Connecting..."
@@ -21,13 +55,6 @@ export default {
       this.doWriteInConsole(consoleLabel)
 
       this.$yoo.socket.open()
-
-      this.$yoo.socket.events({
-        open: this.doSocketOpen,
-        message: this.doReceivedMessage,
-        close: this.doSocketClose,
-        error: this.doSocketError
-      })
     },
     doWriteInConsole (text) {
       let newLine = '\n'
@@ -56,36 +83,7 @@ export default {
 
         return this.$yoo.socket.push('echo')
       }, 2000)
-    },
-    doSocketOpen ($socket) {
-      const consoleLabel = "[YooSocket] Hey! I'm connected!"
-
-      this.doWriteInConsole(consoleLabel)
-
-      clearInterval(this.interval)
-      return this.doPing()
-    },
-    doSocketClose () {
-      const consoleLabel = '[YooSocket] Socket was closed'
-
-      this.doWriteInConsole(consoleLabel)
-    },
-    doSocketError () {
-      const consoleLabel = '[YooSocket] Socket had an error'
-
-      this.doWriteInConsole(consoleLabel)
-    },
-    doReceivedMessage ($socket, message) {
-      if (!message) {
-        const consoleLabel = '[YooSocket] Message is empty'
-
-        this.doWriteInConsole(consoleLabel)
-      }
-
-      const consoleLabel = `[YooSocket] Received Message: '${message}'!`
-
-      this.doWriteInConsole(consoleLabel)
-    },
+    }
   }
 }
 </script>
