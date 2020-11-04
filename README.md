@@ -38,6 +38,7 @@ Vue.use(
     timeout: 1000,
     headers: [],
     reconnect: true,
+    delay: 1000,
     debug: false,
     proxy: {
       address: '',
@@ -50,6 +51,68 @@ Vue.use(
 After that, you can access the socket object in your entire project using `this.$yoo.socket`
 
 #### Vue Component
+**Declaring events using an Yoonit-Style**
+
+`App.vue`
+```vue
+<template>
+  <Page @loaded="doLoaded"></Page>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    interval: null
+  }),
+  methods: {
+    doLoaded () {
+      // start the connection
+      this.$yoo.socket.open()
+    },
+    doPing () {
+      this.interval = setInterval(() => {
+        if (!this.$yoo.socket.getStatus()) {
+          return console.log('[YooSocket] Socket closed')
+        }
+
+        console.log("[YooSocket] Sending 'echo' message!")
+
+        // add your message/file to queue and call 'send' method
+        return this.$yoo.socket.push('echo')
+      }, 2000)
+    }
+  },
+  yoo: {
+    socket: {
+      events: {
+        open ($socket) {
+          console.log("[YooSocket] Hey! I'm connected!")
+
+          clearInterval(this.interval)
+          return this.doPing()
+        },
+        message ($socket, message) {
+          if (!message) {
+            console.log("[YooSocket] Message is empty")
+          }
+
+          console.log(`[YooSocket] Received Message: '${message}'!`)
+        },
+        close () {
+          console.log("[YooSocket] Socket was closed")
+        },
+        error () {
+          console.log("[YooSocket] Socket had an error")
+        }
+      }
+    }
+  }
+}
+</script>
+```
+
+**Or declaring events using your own already created methods**
+
 `App.vue`
 ```vue
 <template>
@@ -141,9 +204,10 @@ export default {
 | Property | Return Type |
 |-|-|
 | **`protocol`** | string
-| **`timeout`** | string
+| **`timeout`** | number
 | **`headers`** | array
 | **`reconnect`** | boolean
+| **`delay`** | number
 | **`debug`** | boolean
 | **`proxy`** | object
 | **`callbacks`** | object

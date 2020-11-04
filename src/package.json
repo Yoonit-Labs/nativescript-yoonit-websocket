@@ -10,9 +10,9 @@
     }
   },
   "repository": {
-		"type": "git",
-		"url": "https://github.com/Yoonit-Labs/nativescript-yoonit-websocket"
-	},
+    "type": "git",
+    "url": "https://github.com/Yoonit-Labs/nativescript-yoonit-websocket"
+  },
   "scripts": {},
   "keywords": [
     "JavaScript",

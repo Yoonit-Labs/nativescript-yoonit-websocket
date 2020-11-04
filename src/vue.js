@@ -33,6 +33,7 @@ export default {
     let timeout
     let headers
     let reconnect
+    let delay
     let debug
     let proxy
 
@@ -41,6 +42,7 @@ export default {
       timeout = opts.timeout || 10000
       headers = opts.headers || []
       reconnect = opts.reconnect || true
+      delay = opts.delay || 1000
       debug = opts.debug
       proxy = opts.proxy || null
     }
@@ -63,33 +65,39 @@ export default {
           socket['callbacks'][key] = []
         })
 
-    const events = events => {
-      if (events) {
-        Object
-          .keys(events)
-          .forEach(key => {
-            const fn = events[key].bind(this)
-
-            socket.on(key, () => null)
-
-            if (reconnect &&
-                (key === 'close' ||
-                key === 'error')
-            ) {
-              socket.on(
-                key,
-                () => {
-                  fn()
-                  setTimeout(() => socket.open(), 1000)
-                }
-              )
-            } else {
-              socket.on(key, fn)
-            }
-
-            events[key].__binded = fn
-          })
+    const eventMaker = (events, scope = this) => {
+      if (!events ||
+          !Object.keys(events).length) {
+        return null
       }
+
+      Object
+        .keys(events)
+        .forEach(key => {
+          const fn = events[key].bind(scope)
+
+          socket.on(key, () => null)
+
+          if (reconnect &&
+              (key === 'close' ||
+              key === 'error')
+          ) {
+            socket.on(
+              key,
+              () => {
+                fn()
+                setTimeout(
+                  () => socket.open(),
+                  delay
+                )
+              }
+            )
+          } else {
+            socket.on(key, fn)
+          }
+
+          events[key].__binded = fn
+        })
     }
 
     const push = something => {
@@ -102,11 +110,53 @@ export default {
       return socket.send(something)
     }
 
-    socket['events'] = events
-    socket['openAsync'] = (timeout = 1000) => setTimeout(() => socket.open(), timeout)
+    socket['events'] = eventMaker
     socket['getStatus'] = () => socket.opened
     socket['push'] = push
     socket['destroy'] = destroy
+    socket['openAsync'] = (timeout = delay) =>
+      setTimeout(
+        () => socket.open(),
+        timeout
+      )
+
+    const addListeners = function () {
+      if (this.$options &&
+          this.$options['yoo'] &&
+          this.$options['yoo']['socket']) {
+        const { events } = this.$options.yoo.socket
+
+        if (events &&
+            Object.keys(events).length) {
+          return socket.events(events, this)
+        }
+      }
+    }
+
+    const removeListeners = function () {
+      if (this.$options &&
+          this.$options['yoo'] &&
+          this.$options['yoo']['socket']) {
+        const { events } = this.$options.yoo.socket
+
+        if (events &&
+            Object.keys(events).length) {
+          return Object
+            .keys(events)
+            .forEach(key =>
+              socket.off(key, events[key].__binded)
+            )
+        }
+      }
+    }
+
+    Vue.mixin({
+      [Vue.version.indexOf('2') === 0
+        ? 'beforeCreate'
+        : 'beforeCompile'
+      ]: addListeners,
+      beforeDestroy: removeListeners
+    })
 
     Vue.prototype.$yoo = {
       ...Vue.prototype.$yoo,

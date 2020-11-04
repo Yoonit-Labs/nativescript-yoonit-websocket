@@ -26,6 +26,7 @@ module.exports = {
     'PSWebSocket': true
   },
   rules: {
+    'standard/computed-property-even-spacing': [4, 'off'],
     'no-useless-constructor': 'off',
     'no-console': 'off',
     'no-debugger': 'off',

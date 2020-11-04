@@ -1,9 +1,0 @@
-{
-  "android": {
-    "v8Flags": "--expose_gc",
-    "markingMode": "none"
-  },
-  "main": "main",
-  "name": "Yoonit WebSocket",
-  "version": "1.0.0"
-}
