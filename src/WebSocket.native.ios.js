@@ -25,7 +25,7 @@ const WebSocket = NSObject.extend({
       return
     }
 
-    this.wrapper._notify(
+    this.wrapper.notify(
       'open',
       [
         this.wrapper
@@ -44,7 +44,7 @@ const WebSocket = NSObject.extend({
       message = buf
     }
 
-    this.wrapper._notify(
+    this.wrapper.notify(
       'message',
       [
         this.wrapper,
@@ -58,7 +58,7 @@ const WebSocket = NSObject.extend({
       return
     }
 
-    this.wrapper._notify(
+    this.wrapper.notify(
       'close',
       [
         this.wrapper,
@@ -71,7 +71,7 @@ const WebSocket = NSObject.extend({
     if (!err ||
         err.code !== 3 &&
         err.code !== 54) {
-      this.wrapper._notify(
+      this.wrapper.notify(
         'error',
         [
           this.wrapper,
@@ -91,7 +91,7 @@ const WebSocket = NSObject.extend({
       return
     }
 
-    this.wrapper._notify(
+    this.wrapper.notify(
       'close',
       [
         this.wrapper,

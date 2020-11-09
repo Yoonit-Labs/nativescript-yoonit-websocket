@@ -75,7 +75,7 @@ export default class YoonitWebSocket extends WebSocketBase {
   * @param message {String|ArrayBuffer} - Message to send
   * @private
   */
-  _send (message) {
+  send (message) {
     if (!this.socket) {
       return
     }
