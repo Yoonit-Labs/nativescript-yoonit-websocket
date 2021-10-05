@@ -1,16 +1,22 @@
-// +-+-+-+-+-+-+
-// |y|o|o|n|i|t|
-// +-+-+-+-+-+-+
-//
-// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-// | Yoonit WebSocket Plugin for NativeScript applications           |
-// |                                                                 |
-// | Based on NativeScript Websockets created by Nathanael Anderson  |
-// | (https://github.com/nathanaela/nativescript-websockets.git)     |
-// |                                                                 |
-// | Rewritten using modern JS methodologies                         |
-// | Luigui Delyer @ Cyberlabs AI 2020                               |
-// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+/**
+ * ██╗   ██╗ ██████╗  ██████╗ ███╗   ██╗██╗████████╗
+ * ╚██╗ ██╔╝██╔═══██╗██╔═══██╗████╗  ██║██║╚══██╔══╝
+ *  ╚████╔╝ ██║   ██║██║   ██║██╔██╗ ██║██║   ██║
+ *   ╚██╔╝  ██║   ██║██║   ██║██║╚██╗██║██║   ██║
+ *    ██║   ╚██████╔╝╚██████╔╝██║ ╚████║██║   ██║
+ *    ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝
+ *
+ * https://yoonit.dev - about@yoonit.dev
+ *
+ * NativeScript Yoonit Websocket
+ * Build modern apps using NativeScript and WebSocket in Android and iOS
+ *
+ * Based on NativeScript Websockets created by Nathanael Anderson
+ * https://github.com/nathanaela/nativescript-websockets.git
+ * Rewritten using modern JS methodologies
+ *
+ * Luigui Delyer @ 2020-2021
+ */
 
 import {
   ToHashMap,
@@ -112,7 +118,7 @@ export default class YoonitWebSocket extends WebSocketBase {
 
     // Check for SSL/TLS
     if (isWSS) {
-      let socketFactory = null
+      let socketFactory
 
       if (this._sslSocketFactory) {
         socketFactory = this._sslSocketFactory
