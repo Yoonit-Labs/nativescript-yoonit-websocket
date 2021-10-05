@@ -1,6 +1,6 @@
 {
   "name": "@yoonit/nativescript-websocket",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Yoonit WebSocket plugin for Android and iOS to build modern apps with NativeScript",
   "main": "Yoonit.WebSocket",
   "nativescript": {
@@ -13,7 +13,11 @@
     "type": "git",
     "url": "https://github.com/Yoonit-Labs/nativescript-yoonit-websocket"
   },
-  "scripts": {},
+  "scripts": {
+    "demo:ios": "cd ../demo-vue && tns run ios",
+    "demo:android": "cd ../demo-vue && tns debug android --debug-brk",
+    "demo:reset": "cd ../demo-vue && npx rimraf -- hooks node_modules platforms && cd ../src && npm i"
+  },
   "keywords": [
     "JavaScript",
     "NativeScript",
@@ -22,8 +26,8 @@
     "iOS"
   ],
   "author": {
-    "name": "Luigui Delyer @ Cyberlabs AI - 2020",
-    "email": "luigui@cyberlabs.ai"
+    "name": "Luigui Delyer @ 2020-2021",
+    "email": "about@yoonit.dev"
   },
   "license": "MIT",
   "devDependencies": {

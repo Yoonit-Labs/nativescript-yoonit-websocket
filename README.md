@@ -1,17 +1,43 @@
-[<img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/development/logo_cyberlabs.png" width="300">](https://cyberlabs.ai/)
+<h1 align="center">NativeScript Yoonit Camera</h1>
 
-# NativeScript Yoonit WebSocket
+<p align="center">
+	<img src="https://img.shields.io/badge/NativeScript-7-lightgrey.svg?style=for-the-badge&logo=nativescript"/>
+	<img src="https://img.shields.io/npm/v/@yoonit/nativescript-websocket?color=lightgrey&style=for-the-badge&logo=npm"/>
+	<img src="https://img.shields.io/npm/dm/@yoonit/nativescript-websocket?color=lightgrey&logo=npm&style=for-the-badge"/>
+	<img src="https://img.shields.io/badge/Android-YES-lightgrey.svg?style=for-the-badge&logo=android"/>
+	<img src="https://img.shields.io/badge/iOS-YES-lightgrey.svg?style=for-the-badge&logo=apple"/>
+	<img src="https://img.shields.io/npm/l/@yoonit/nativescript-camera?color=lightgrey&style=for-the-badge"/>
+</p>
+<p align="center">Build modern apps using NativeScript and WebSocket in Android and iOS
+</p>
 
-![NativeScript](https://img.shields.io/badge/NativeScript-7-lightgrey.svg?style=for-the-badge&logo=nativescript) ![Version](https://img.shields.io/npm/v/@yoonit/nativescript-websocket?color=lightgrey&style=for-the-badge&logo=npm) ![Downloads](https://img.shields.io/npm/dm/@yoonit/nativescript-websocket?color=lightgrey&logo=npm&style=for-the-badge)
-
-![Android](https://img.shields.io/badge/Android-YES-lightgrey.svg?style=for-the-badge&logo=android) ![iOS](https://img.shields.io/badge/iOS-YES-lightgrey.svg?style=for-the-badge&logo=apple) ![MIT license](https://img.shields.io/npm/l/@yoonit/nativescript-websocket?color=lightgrey&style=for-the-badge)
-
-Build modern apps using NativeScript and WebSocket in Android and iOS
-
-A NativeScript plugin to provide:
-- Better and more stable Websocket connection
+- Stable Websocket connection
 - Modern JS Code (ESNext)
-- VueJS integrated plugin
+- Works in emulator and real devices
+- Timeout configuration
+- Automatic reconnection
+- Proxy options
+- Custom headers
+- VueJS Plugin
+
+<div align="center">
+	<h3>Sponsors</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<b>Platinum</b>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" valign="middle">
+					<a href="https://cyberlabs.ai"><img src="https://raw.githubusercontent.com/Yoonit-Labs/nativescript-yoonit-websocket/development/sponsor_cyberlabs.png" width="300" /></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h5><a href="mailto:about@yoonit.dev">Become a sponsor!</a></h5>
+</div>
 
 ## Installation
 
@@ -49,6 +75,9 @@ Vue.use(
 ```
 
 After that, you can access the socket object in your entire project using `this.$yoo.socket`
+
+#### Angular, React, Svelte or any other framework
+Currently we can't offer any other integration with other frameworks that works on top of NativeScript beyond VueJS, you are totaly open to create and send to us a PR. But, this is a pure NativeScript plugin, if you know how to manipulate your preferred platform you will be capable to include it in your project.
 
 #### Vue Component
 **Declaring events using an Yoonit-Style**
@@ -218,9 +247,14 @@ export default {
 ## To contribute and make it better
 
 Clone the repo, change what you want and send PR.
+For commit messages we use <a href="https://www.conventionalcommits.org/">Conventional Commits</a>.
 
 Contributions are always welcome!
 
----
+<a href="https://github.com/Yoonit-Labs/nativescript-yoonit-websocket/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Yoonit-Labs/nativescript-yoonit-websocket" />
+</a>
+  
+---  
 
-Code with ❤ by the [**Cyberlabs AI**](https://cyberlabs.ai/) Front-End Team
+Code with ❤ by the [**Yoonit**](https://yoonit.dev/) Team
