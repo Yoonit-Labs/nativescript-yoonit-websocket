@@ -1,6 +1,6 @@
 {
   "name": "@yoonit/nativescript-websocket",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Yoonit WebSocket plugin for Android and iOS to build modern apps with NativeScript",
   "main": "Yoonit.WebSocket",
   "nativescript": {
@@ -14,6 +14,9 @@
     "url": "https://github.com/Yoonit-Labs/nativescript-yoonit-websocket"
   },
   "scripts": {
+    "tsc": "npm i && tsc",
+    "build": "npm run tsc && npm run build:native",
+    "build:native": "node scripts/build-native.js",
     "demo:ios": "cd ../demo-vue && tns run ios",
     "demo:android": "cd ../demo-vue && tns debug android --debug-brk",
     "demo:reset": "cd ../demo-vue && npx rimraf -- hooks node_modules platforms && cd ../src && npm i"
